@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
-import HomepageInteractive from './homepage/components/HomepageInteractive';
+import HomepageInteractive from './components/HomepageInteractive';
 
 export const metadata: Metadata = {
   title: 'ShutterSync - Photography Collective',
@@ -19,13 +19,13 @@ export default function Homepage() {
     <main className="min-h-screen bg-background overflow-x-hidden">
       {/* Film Grain Overlay */}
       <div className="noise-overlay" />
-
+      
       {/* Header */}
       <Header />
-
+      
       {/* Main Content */}
       <HomepageInteractive />
-
+      
       {/* Footer */}
       <Footer />
     </main>

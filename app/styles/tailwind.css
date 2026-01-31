@@ -1,0 +1,276 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background Colors */
+    --color-background: #0a0a0a; /* neutral-950 */
+    --color-foreground: #ffffff; /* white */
+    --color-card: #1a1a1a; /* zinc-900 */
+    --color-card-foreground: #ffffff; /* white */
+    --color-popover: #1a1a1a; /* zinc-900 */
+    --color-popover-foreground: #ffffff; /* white */
+    
+    /* Muted Colors */
+    --color-muted: #27272a; /* zinc-800 */
+    --color-muted-foreground: #a1a1aa; /* zinc-400 */
+    
+    /* Primary Colors */
+    --color-primary: #ffffff; /* white */
+    --color-primary-foreground: #0a0a0a; /* neutral-950 */
+    
+    /* Secondary Colors */
+    --color-secondary: #27272a; /* zinc-800 */
+    --color-secondary-foreground: #ffffff; /* white */
+    
+    /* Accent Colors */
+    --color-accent: #3f3f46; /* zinc-700 */
+    --color-accent-foreground: #ffffff; /* white */
+    
+    /* Destructive Colors */
+    --color-destructive: #ef4444; /* red-500 */
+    --color-destructive-foreground: #ffffff; /* white */
+    
+    /* Success Colors */
+    --color-success: #10b981; /* emerald-500 */
+    --color-success-foreground: #ffffff; /* white */
+    
+    /* Warning Colors */
+    --color-warning: #f59e0b; /* amber-500 */
+    --color-warning-foreground: #ffffff; /* white */
+    
+    /* Error Colors */
+    --color-error: #ef4444; /* red-500 */
+    --color-error-foreground: #ffffff; /* white */
+    
+    /* Border & Input */
+    --color-border: #27272a; /* zinc-800 */
+    --color-input: #27272a; /* zinc-800 */
+    --color-ring: #52525b; /* zinc-600 */
+    
+    /* Radius */
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Newsreader', Georgia, serif;
+  }
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+  }
+}
+
+/* Film Grain Overlay */
+@layer components {
+  .noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Scroll Animations */
+@layer utilities {
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes slideInBlur {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes scrollBlur {
+    0% {
+      filter: blur(0px) brightness(1);
+      transform: scale(1);
+    }
+    100% {
+      filter: blur(24px) brightness(0.3);
+      transform: scale(1.08);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(-25%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: none;
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+
+  .animate-slideInBlur {
+    animation: slideInBlur 1.2s ease-out forwards;
+  }
+
+  .animate-fadeInScale {
+    animation: fadeInScale 0.8s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-bounce {
+    animation: bounce 1s infinite;
+  }
+}
+
+/* Glassmorphism */
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Claymorphism */
+@layer components {
+  .clay {
+    background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
+    box-shadow: 8px 8px 16px #0a0a0a, -8px -8px 16px #2a2a2a;
+    border-radius: 24px;
+  }
+
+  .clay-inset {
+    background: linear-gradient(145deg, #1f1f1f, #2a2a2a);
+    box-shadow: inset 8px 8px 16px #0a0a0a, inset -8px -8px 16px #2a2a2a;
+    border-radius: 24px;
+  }
+}
+
+/* Custom Scrollbar */
+@layer utilities {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #52525b;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #71717a;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Selection */
+@layer base {
+  ::selection {
+    background: #ffffff;
+    color: #0a0a0a;
+  }
+}
+
+/* Glow Effect */
+@layer components {
+  .glow-button {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glow-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at var(--x, 50%) var(--y, 50%),
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.1) 30%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .glow-button:hover::before {
+    opacity: 1;
+  }
+}

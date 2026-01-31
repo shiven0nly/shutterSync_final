@@ -150,17 +150,6 @@ export default function HeroSection() {
                   <div className="absolute inset-0 shadow-[inset_0_0_180px_rgba(0,0,0,0.8)]" />
                 </div>
 
-                {/* Top Overlay Cards */}
-                <div className="absolute left-6 top-6 right-6 flex items-start justify-between gap-4 z-20">
-                  <div className="clay rounded-2xl bg-black/40 border border-white/10 px-4 py-3 backdrop-blur-md">
-                    <div className="text-[10px] uppercase tracking-widest text-white/50 font-medium">Featured</div>
-                    <div className="font-serif italic text-lg text-white mt-1">Spline Robot Guide</div>
-                  </div>
-                  <div className="hidden sm:block clay rounded-2xl bg-black/40 border border-white/10 px-4 py-3 text-[10px] uppercase tracking-widest text-white/60 backdrop-blur-md leading-relaxed">
-                    Interactive<br />Environment
-                  </div>
-                </div>
-
                 {/* Spline Robot Scene */}
                 <div className="absolute inset-0 z-10 pointer-events-none">
                   {showSpline ? (
@@ -183,7 +172,7 @@ export default function HeroSection() {
                         Saturday, 6:00 PM • Main Gate
                       </div>
                     </div>
-                    <GsapFillButton variant="dark" className="px-6 py-3 text-[10px] tracking-[0.2em] uppercase font-bold">
+                    <GsapFillButton variant="light" className="px-6 py-3 text-[10px] tracking-[0.2em] uppercase font-bold">
                       RSVP
                     </GsapFillButton>
                   </div>
